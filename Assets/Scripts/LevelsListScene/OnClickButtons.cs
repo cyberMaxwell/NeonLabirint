@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class RestartScript : MonoBehaviour
+public class OnClickButtons : MonoBehaviour
 {
-    public Button restartButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +17,12 @@ public class RestartScript : MonoBehaviour
     {
         
     }
-    public void OnClickRestartButton()
+
+    public void OnClickLevelButton(int level)
     {
-        restartButton.gameObject.SetActive(false);
-        SceneManager.LoadScene(1);
+        PlayerPrefs.SetInt("currentLevel", level);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene(level.ToString());
     }
 }
